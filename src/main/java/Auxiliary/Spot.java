@@ -9,6 +9,7 @@ public class Spot {
     private char letter;
     private char number;
 
+    public Spot()  {}
     public Spot(int x, int y, char letter, char number, Piece piece) {
         this.setPiece(piece);
         this.setX(x);

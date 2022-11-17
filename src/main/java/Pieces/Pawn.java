@@ -14,6 +14,7 @@ public class Pawn extends Piece{
         if (end.getPiece().getColor() == this.getColor()) {
             return false;
         } else {
+
             //HERE WE MUST WRITE THE METHOD OF MOVEMENT OF THIS PIECE
             //FOR NOW, LET'S RETURN ALWAYS TRUE
             return true;
