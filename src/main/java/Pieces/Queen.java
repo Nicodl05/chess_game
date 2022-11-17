@@ -95,6 +95,61 @@ public class Queen extends Piece{
                         up=2;
                 }
             }while(up!=2);
+            up=0;
+            do{
+                if(up==0){
+                    x-=1;
+                    tocheck.setX(x);
+                    if(!tocheck.isOccupied()){
+                        available.add(tocheck);
+                    }
+                    if(tocheck.getPiece().getColor()!=start.getPiece().getColor()){
+                        available.add(tocheck);
+                        up=1;
+                    }
+                    if(x==0)
+                        up=1;
+                }
+                if(up==1){
+                    x+=1;
+                    tocheck.setX(x);
+                    if(!tocheck.isOccupied()){
+                        available.add(tocheck);
+                    }
+                    if(tocheck.getPiece().getColor()!=start.getPiece().getColor()){
+                        available.add(tocheck);
+                        up=1;
+                    }
+                    if(x==7)
+                        up=2;
+                }
+                if(up==2){
+                    y+=1;
+                    tocheck.setY(y);
+                    if(!tocheck.isOccupied()){
+                        available.add(tocheck);
+                    }
+                    if(tocheck.getPiece().getColor()!=start.getPiece().getColor()){
+                        available.add(tocheck);
+                        up=1;
+                    }
+                    if(y==7)
+                        up=3;
+                }
+                if(up==3){
+                    y-=1;
+                    tocheck.setY(y);
+                    if(!tocheck.isOccupied()){
+                        available.add(tocheck);
+                    }
+                    if(tocheck.getPiece().getColor()!=start.getPiece().getColor()){
+                        available.add(tocheck);
+                        up=1;
+                    }
+                    if(y==0)
+                        up=4;
+                }
+            }while(up!=4);
 
 
 
