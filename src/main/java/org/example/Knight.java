@@ -2,7 +2,7 @@ package org.example;
 
 public class Knight extends Piece{
     public Knight(boolean alive, boolean color) {
-        super(alive, color);
+        super(alive, color, 3);
     }
 
     @Override

@@ -3,7 +3,7 @@ package org.example;
 public class Rook extends Piece {
 
     public Rook(boolean alive, boolean color) {
-        super(alive, color);
+        super(alive, color, 5);
     }
 
     @Override

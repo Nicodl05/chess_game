@@ -6,9 +6,9 @@ public class Spot {
     private int x;
     private int y;
     private char letter;
-    private int number;
+    private char number;
 
-    public Spot(int x, int y, char letter, int number, Piece piece) {
+    public Spot(int x, int y, char letter, char number, Piece piece) {
         this.setPiece(piece);
         this.setX(x);
         this.setY(y);
@@ -58,15 +58,21 @@ public class Spot {
         this.letter = letter;
     }
 
-    public int getNumber() {
+    public char getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(char number) {
         this.number = number;
     }
 
     public boolean isOccupied() {
         return occupied;
+    }
+
+    public void DisplaySpot(){
+        if (occupied==true) {
+            System.out.print(" " + x + " " + y + " ");
+        }
     }
 }

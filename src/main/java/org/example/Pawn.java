@@ -2,7 +2,7 @@ package org.example;
 
 public class Pawn extends Piece{
     public Pawn(boolean alive, boolean color) {
-        super(alive, color);
+        super(alive, color, 1);
     }
 
     @Override
