@@ -1,8 +1,11 @@
-package org.example;
+package Pieces;
 
-public class Knight extends Piece{
-    public Knight(boolean alive, boolean color) {
-        super(alive, color, 3);
+import Auxiliary.Board;
+import Auxiliary.Spot;
+
+public class Queen extends Piece{
+    public Queen(boolean alive, boolean color) {
+        super(alive, color, 9);
     }
 
     @Override

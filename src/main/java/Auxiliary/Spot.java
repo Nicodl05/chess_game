@@ -1,4 +1,5 @@
-package org.example;
+package Auxiliary;
+import Pieces.*;
 
 public class Spot {
     private Piece piece;

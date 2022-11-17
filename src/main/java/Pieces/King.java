@@ -1,4 +1,7 @@
-package org.example;
+package Pieces;
+
+import Auxiliary.Board;
+import Auxiliary.Spot;
 
 public class King extends Piece{
     public King(boolean alive, boolean color) {

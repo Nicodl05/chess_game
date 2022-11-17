@@ -1,6 +1,6 @@
-package org.example;
+package Auxiliary;
 
-
+import Pieces.*;
 //We are coding with Black in front of us
 
 public class Board {

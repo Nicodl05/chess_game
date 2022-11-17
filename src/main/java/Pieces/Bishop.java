@@ -1,14 +1,16 @@
-package org.example;
+package Pieces;
 
-public class Rook extends Piece {
+import Auxiliary.Board;
+import Auxiliary.Spot;
 
-    public Rook(boolean alive, boolean color) {
-        super(alive, color, 5);
+public class Bishop extends Piece{
+    public Bishop(boolean alive, boolean color) {
+        super(alive, color, 3);
     }
 
     @Override
     public boolean canMove(Board board, Spot start, Spot end) {
-        // we can't move the piece to a spot that has a piece of the same colour
+        // we can't move the piece to a spot that is occupied by a piece of the same color
         if (end.getPiece().getColor() == this.getColor()) {
             return false;
         } else {

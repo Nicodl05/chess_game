@@ -4,7 +4,7 @@ Capable de se déplacer :
 Verticalement
 Horizontalement
 Penser à une condition bool pour faire un castle
-Penser à la condition bloquer 
+Penser à la condition bloquer(*)
 
 Knight
 
@@ -16,7 +16,7 @@ Bishop
 
 Capable de se déplacer:
 diaognale
-Penser à la condition bloquer
+Penser à la condition bloquer(*)
 
 Queen
 
@@ -24,17 +24,21 @@ Capable de se déplacer:
 verticalement
 horizontalement
 diagonale
-Penser à la condition bloquer
+Penser à la condition bloquer(*)
 
 
 King
 Capable de se déplacer d'une case
 n'importe quelle direction
-Penser à la condition bloquer
+Penser à la condition bloquer(*)
 Penser à la conditio castle
 
 Pawn
 Capable de se déplacer d'une case sauf départ ou possibilité de deux cases
 Peut prendre uniquement sur diagonales
-Penser à la condition bloquer
+Penser à la condition bloquer(*)
+
+(*)Condition pour bloquer déplaccement:
+Si c est une pièce de meme couleur, interdit de prendre sa place et s arreter max une case avant
+Si c est une pièce de couleur opposé, on s arrete à sa case si on veut et on la mange
 

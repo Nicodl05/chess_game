@@ -1,4 +1,7 @@
-package org.example;
+package Pieces;
+
+import Auxiliary.Board;
+import Auxiliary.Spot;
 
 public abstract class Piece {
 
