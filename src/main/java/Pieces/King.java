@@ -3,6 +3,8 @@ package Pieces;
 import Auxiliary.Board;
 import Auxiliary.Spot;
 
+import java.util.List;
+
 public class King extends Piece{
     public King(boolean alive, boolean color) {
         super(alive, color, 0);
@@ -18,5 +20,10 @@ public class King extends Piece{
             //FOR NOW, LET'S RETURN ALWAYS TRUE
             return true;
         }
+    }
+
+    @Override
+    public List<Spot> available_spot(Board board, Spot start) {
+        return null;
     }
 }

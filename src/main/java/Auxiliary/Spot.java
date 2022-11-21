@@ -1,6 +1,7 @@
 package Auxiliary;
 import Pieces.*;
 
+
 public class Spot {
     private Piece piece;
     private boolean occupied;
@@ -76,5 +77,11 @@ public class Spot {
         if (occupied==true) {
             System.out.print(" " + x + " " + y + " ");
         }
+        else{
+            System.out.print(ANSI_RED_BACKGROUND+" X X "+ANSI_RESET);
+        }
     }
+
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_RESET = "\u001B[0m";
 }

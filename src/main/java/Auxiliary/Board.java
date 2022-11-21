@@ -6,17 +6,23 @@ import Pieces.*;
 public class Board {
     Spot[][] board=new Spot[8][8];
 
+    public Spot[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(Spot[][] board) {
+        this.board = board;
+    }
+
     public Board()
     {
         this.resetBoard();
     }
 
-    public Spot getBox(int x, int y) throws Exception {
-
+    public Spot getSpot(int x, int y) throws Exception {
         if (x < 0 || x > 7 || y < 0 || y > 7) {
             throw new Exception("Index out of bound");
         }
-
         return board[x][y];
     }
 
@@ -76,10 +82,13 @@ public class Board {
                         temp='3';
 
                     board[i][j] = new Spot(i, j, alphabet,temp ,null);
+
                 }
             }
         }
+
     }
+
 
     public void displayBoard(){
         for (int i=0; i<8; i++){
@@ -88,5 +97,9 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public void SelectSpotstart(){
+
     }
 }

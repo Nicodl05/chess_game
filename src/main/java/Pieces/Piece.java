@@ -3,6 +3,8 @@ package Pieces;
 import Auxiliary.Board;
 import Auxiliary.Spot;
 
+import java.util.List;
+
 public abstract class Piece {
 
     private boolean alive; //false if piece alive
@@ -41,4 +43,7 @@ public abstract class Piece {
 
     public abstract boolean canMove(Board board,
                                     Spot start, Spot end);
+
+    //Method to return all available spots on the board of a piece (by considering all conditions)
+    public abstract List<Spot> available_spot(Board board, Spot start) throws Exception;
 }

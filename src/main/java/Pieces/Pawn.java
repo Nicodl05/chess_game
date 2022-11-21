@@ -23,6 +23,13 @@ public class Pawn extends Piece{
             return true;
         }
     }
+
+    @Override
+    public List<Spot> available_spot(Board board, Spot start) {
+        return null;
+    }
+
+
     public void Movement(Board board, Spot start) {
         List<Spot> available = new ArrayList<>();
         Spot tosave = start;
