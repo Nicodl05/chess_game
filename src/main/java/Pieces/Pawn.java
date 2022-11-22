@@ -26,6 +26,14 @@ public class Pawn extends Piece{
 
     @Override
     public List<Spot> available_spot(Board board, Spot start) {
+        List<Spot> availables = new ArrayList<>();
+        int x=start.getX();
+        int y=start.getY();
+        boolean limit=false;
+
+
+
+
         return null;
     }
 
