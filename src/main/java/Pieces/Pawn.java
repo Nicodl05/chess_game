@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece{
+    private boolean Hasmoved;
     public Pawn(boolean alive, boolean color) {
         super(alive, color, 1);
+        Hasmoved=false;
     }
 
     @Override
@@ -25,56 +27,80 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public List<Spot> available_spot(Board board, Spot start) {
+    public List<Spot> available_spot(Board board, Spot start) throws Exception {
         List<Spot> availables = new ArrayList<>();
         int x=start.getX();
         int y=start.getY();
-        boolean limit=false;
+
+        //White side:
+        if ( start.getPiece().getColor()==true && x>0){
+
+            if (this.Hasmoved==false) {
+                if (board.getSpot(x - 2, y).getPiece() == null) {
+                    availables.add(board.getSpot(x - 2, y));
+                }
+            }
+            if (board.getSpot(x - 1, y).getPiece() == null) {
+                availables.add(board.getSpot(x - 1, y));
+            }
+
+            //Capture
+            //LEFT SIDE UP
+            if (y>0) {
+                if (board.getSpot(x - 1, y - 1).getPiece() != null &&
+                        board.getSpot(x - 1, y - 1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x - 1, y-1));
+                }
+            }
+
+            //RIGHT SIDE UP
+            if (y<7) {
+                if (board.getSpot(x - 1, y + 1).getPiece() != null &&
+                        board.getSpot(x - 1, y + 1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x - 1, y+1));
+                }
+            }
+        }
 
 
+        if (start.getPiece().getColor()==false && x<7){
+            if (this.Hasmoved==false) {
+                if (board.getSpot(x + 2, y).getPiece() == null) {
+                    availables.add(board.getSpot(x + 2, y));
+                }
+            }
+            if (board.getSpot(x + 1, y).getPiece() == null) {
+                availables.add(board.getSpot(x + 1, y));
+            }
 
+            //Capture
+            //LEFT SIDE DOWN
+            if (y>0) {
+                if (board.getSpot(x + 1, y - 1).getPiece() != null &&
+                        board.getSpot(x + 1, y - 1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x + 1, y-1));
+                }
+            }
 
-        return null;
+            //RIGHT SIDE DOWN
+            if (y<7) {
+                if (board.getSpot(x + 1, y + 1).getPiece() != null &&
+                        board.getSpot(x + 1, y + 1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x + 1, y+1));
+                }
+            }
+        }
+        return availables;
     }
 
 
-    public void Movement(Board board, Spot start) {
-        List<Spot> available = new ArrayList<>();
-        Spot tosave = start;
-        Spot tocheck = new Spot(); // Penser à faire le check du movement pour le début (2 cases)
-        int x = start.getX();
-        int y = start.getY();
-        if(start.getPiece().getColor()){
-            x-=1;
-            tocheck.setX(x);
-            if(!tocheck.isOccupied()){
-                available.add(tocheck);
-            }
-            y-=1;
-            tocheck.setY(y);
-            if(tocheck.isOccupied() && !tocheck.getPiece().getColor())
-                available.add(tocheck);
-            y+=2;
-            tocheck.setY(y);
-            if(tocheck.isOccupied() && !tocheck.getPiece().getColor())
-                available.add(tocheck);
-        }
-        else{
-            x+=1;
-            tocheck.setX(x);
-            if(!tocheck.isOccupied()){
-                available.add(tocheck);
-            }
-            y-=1;
-            tocheck.setY(y);
-            if(tocheck.isOccupied() && tocheck.getPiece().getColor())
-                available.add(tocheck);
-            y+=2;
-            tocheck.setY(y);
-            if(tocheck.isOccupied() && tocheck.getPiece().getColor())
-                available.add(tocheck);
-        }
-        }
+    public boolean Hasmoved() {
+        return Hasmoved;
+    }
+
+    public void setHasmoved(boolean hasmoved) {
+        Hasmoved = hasmoved;
+    }
 
 
     }

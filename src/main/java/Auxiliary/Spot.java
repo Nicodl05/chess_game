@@ -4,7 +4,6 @@ import Pieces.*;
 
 public class Spot {
     private Piece piece;
-    private boolean occupied;
     private int x;
     private int y;
     private char letter;
@@ -17,11 +16,6 @@ public class Spot {
         this.setY(y);
         this.setLetter(letter);
         this.setNumber(number);
-        if (piece == null) {
-            occupied = false;
-        } else {
-            occupied = true;
-        }
     }
 
     public Piece getPiece() {
@@ -30,11 +24,6 @@ public class Spot {
 
     public void setPiece(Piece p) {
         this.piece = p;
-        if (piece == null) {
-            occupied = false;
-        } else {
-            occupied = true;
-        }
     }
 
     public int getX() {
@@ -69,17 +58,18 @@ public class Spot {
         this.number = number;
     }
 
-    public boolean isOccupied() {
-        return occupied;
-    }
 
     public void DisplaySpot(){
-        if (occupied==true) {
+        if (this.getPiece()!=null) {
             System.out.print(" " + x + " " + y + " ");
         }
         else{
             System.out.print(ANSI_RED_BACKGROUND+" X X "+ANSI_RESET);
         }
+    }
+
+    public void DisplayCoordinate(){
+        System.out.println(letter+""+number);
     }
 
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
