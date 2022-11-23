@@ -3,27 +3,86 @@ package Pieces;
 import Auxiliary.Board;
 import Auxiliary.Spot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class King extends Piece{
-    public King(boolean alive, boolean color) {
-        super(alive, color, 0);
+    public King(boolean color, boolean hasmoved) {
+        super(color, 0, hasmoved);
     }
 
+
+
     @Override
-    public boolean canMove(Board board, Spot start, Spot end) {
-        // we can't move the piece to a spot that is occupied by a piece of the same color
-        if (end.getPiece().getColor() == this.getColor()) {
-            return false;
-        } else {
-            //HERE WE MUST WRITE THE METHOD OF MOVEMENT OF THIS PIECE
-            //FOR NOW, LET'S RETURN ALWAYS TRUE
-            return true;
+    public List<Spot> available_spot(Board board, Spot start) throws Exception {
+        List<Spot> availables = new ArrayList<>();
+        int x=start.getX();
+        int y=start.getY();
+
+        //On the left of King
+        if (y<7) {
+            if (board.getSpot(x, y + 1).getPiece() == null
+                    || board.getSpot(x, y + 1).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x, y + 1));
+            }
         }
-    }
 
-    @Override
-    public List<Spot> available_spot(Board board, Spot start) {
-        return null;
+        //On the right of King
+        if (y>0) {
+            if (board.getSpot(x, y - 1).getPiece() == null
+                    || board.getSpot(x, y - 1).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x, y - 1));
+            }
+        }
+
+        //Below the King
+        if (x<7) {
+            if (board.getSpot(x+1, y).getPiece() == null
+                    || board.getSpot(x+1, y ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x+1, y ));
+            }
+        }
+
+        //Above the King
+        if (x>0) {
+            if (board.getSpot(x-1, y ).getPiece() == null
+                    || board.getSpot(x-1, y ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x-1, y));
+            }
+        }
+
+        //Above Right King
+        if (x>0 && y<7){
+            if (board.getSpot(x-1, y+1 ).getPiece() == null
+                    || board.getSpot(x-1, y+1 ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x-1, y+1));
+            }
+        }
+
+        //Above Left King
+        if (x>0 && y>0){
+            if (board.getSpot(x-1, y-1 ).getPiece() == null
+                    || board.getSpot(x-1, y-1 ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x-1, y-1));
+            }
+        }
+
+        //Below Left King
+        if (x<7 && y>0){
+            if (board.getSpot(x+1, y-1 ).getPiece() == null
+                    || board.getSpot(x+1, y-1 ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x+1, y-1));
+            }
+        }
+
+        //Below Right King
+        if (x<7 && y<7){
+            if (board.getSpot(x+1, y+1 ).getPiece() == null
+                    || board.getSpot(x+1, y+1 ).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x+1, y+1));
+            }
+        }
+
+        return availables;
     }
 }

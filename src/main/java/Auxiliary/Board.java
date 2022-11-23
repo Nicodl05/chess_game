@@ -31,47 +31,47 @@ public class Board {
         ///White Pieces
 
         // Initialise OTHER WHITE PIECES
-        board[7][0] = new Spot(7, 0, 'a', '1', new Rook(true, true));
-        board[7][1] = new Spot(7, 1, 'b', '1', new Knight(true, true));
-        board[7][2] = new Spot(7, 2, 'c', '1', new Bishop(true, true));
-        board[7][3] = new Spot(7, 3, 'd', '1', new Queen(true, true));
-        board[7][4] = new Spot(7, 4, 'e', '1', new King(true, true));
-        board[7][5] = new Spot(7, 5, 'f', '1', new Bishop(true, true));
-        board[7][6] = new Spot(7, 6, 'g', '1', new Knight(true, true));
-        board[7][7] = new Spot(7, 7, 'h', '1', new Rook(true, true));
+        board[7][0] = new Spot(7, 0, 'a', '1', new Rook( true, false));
+        board[7][1] = new Spot(7, 1, 'b', '1', new Knight( true, false));
+        board[7][2] = new Spot(7, 2, 'c', '1', new Bishop( true, false));
+        board[7][3] = new Spot(7, 3, 'd', '1', new Queen( true, false));
+        board[7][4] = new Spot(7, 4, 'e', '1', new King( true, false));
+        board[7][5] = new Spot(7, 5, 'f', '1', new Bishop( true, false));
+        board[7][6] = new Spot(7, 6, 'g', '1', new Knight( true, false));
+        board[7][7] = new Spot(7, 7, 'h', '1', new Rook( true, false));
 
         // initialize WHITE PAWN pieces
-        board[6][0]=new Spot(6, 0, 'a', '2', new Pawn(true, true));
-        board[6][1]=new Spot(6, 1, 'b', '2', new Pawn(true, true));
-        board[6][2]=new Spot(6, 2, 'c', '2', new Pawn(true, true));
-        board[6][3]=new Spot(6, 3, 'd', '2', new Pawn(true, true));
-        board[6][4]=new Spot(6, 4, 'e', '2', new Pawn(true, true));
-        board[6][5]=new Spot(6, 5, 'f', '2', new Pawn(true, true));
-        board[6][6]=new Spot(6, 6, 'g', '2', new Pawn(true, true));
-        board[6][7]=new Spot(6, 7, 'h', '2', new Pawn(true, true));
+        board[6][0]=new Spot(6, 0, 'a', '2', new Pawn( true, false));
+        board[6][1]=new Spot(6, 1, 'b', '2', new Pawn( true, false));
+        board[6][2]=new Spot(6, 2, 'c', '2', new Pawn( true, false));
+        board[6][3]=new Spot(6, 3, 'd', '2', new Pawn( true, false));
+        board[6][4]=new Spot(6, 4, 'e', '2', new Pawn( true, false));
+        board[6][5]=new Spot(6, 5, 'f', '2', new Pawn( true, false));
+        board[6][6]=new Spot(6, 6, 'g', '2', new Pawn( true, false));
+        board[6][7]=new Spot(6, 7, 'h', '2', new Pawn( true, false));
 
 
 
         ///Black pieces
         // initialize BLACK PAWN pieces
-        board[1][0]=new Spot(1, 0, 'a', '7', new Pawn(true, false));
-        board[1][1]=new Spot(1, 1, 'b', '7', new Pawn(true, false));
-        board[1][2]=new Spot(1, 2, 'c', '7', new Pawn(true, false));
-        board[1][3]=new Spot(1, 3, 'd', '7', new Pawn(true, false));
-        board[1][4]=new Spot(1, 4, 'e', '7', new Pawn(true, false));
-        board[1][5]=new Spot(1, 5, 'f', '7', new Pawn(true, false));
-        board[1][6]=new Spot(1, 6, 'g', '7', new Pawn(true, false));
-        board[1][7]=new Spot(1, 7, 'h', '7', new Pawn(true, false));
+        board[1][0]=new Spot(1, 0, 'a', '7', new Pawn(false, false));
+        board[1][1]=new Spot(1, 1, 'b', '7', new Pawn(false, false));
+        board[1][2]=new Spot(1, 2, 'c', '7', new Pawn(false, false));
+        board[1][3]=new Spot(1, 3, 'd', '7', new Pawn(false, false));
+        board[1][4]=new Spot(1, 4, 'e', '7', new Pawn(false, false));
+        board[1][5]=new Spot(1, 5, 'f', '7', new Pawn(false, false));
+        board[1][6]=new Spot(1, 6, 'g', '7', new Pawn(false, false));
+        board[1][7]=new Spot(1, 7, 'h', '7', new Pawn(false, false));
 
         // initialize other black pieces
-        board[0][0] = new Spot(0, 0, 'a', '8', new Rook(true, false));
-        board[0][1] = new Spot(0, 1, 'b', '8', new Knight(true, false));
-        board[0][2] = new Spot(0, 2, 'c', '8', new Bishop(true, false));
-        board[0][3] = new Spot(0, 3, 'd', '8', new Queen(true, false));
-        board[0][4] = new Spot(0, 4, 'e', '8', new King(true, false));
-        board[0][5] = new Spot(0, 5, 'f', '8', new Bishop(true, false));
-        board[0][6] = new Spot(0, 6, 'g', '8', new Knight(true, false));
-        board[0][7] = new Spot(0, 7, 'h', '8', new Rook(true, false));
+        board[0][0] = new Spot(0, 0, 'a', '8', new Rook(false, false));
+        board[0][1] = new Spot(0, 1, 'b', '8', new Knight(false, false));
+        board[0][2] = new Spot(0, 2, 'c', '8', new Bishop(false, false));
+        board[0][3] = new Spot(0, 3, 'd', '8', new Queen(false, false));
+        board[0][4] = new Spot(0, 4, 'e', '8', new King(false, false));
+        board[0][5] = new Spot(0, 5, 'f', '8', new Bishop(false, false));
+        board[0][6] = new Spot(0, 6, 'g', '8', new Knight(false, false));
+        board[0][7] = new Spot(0, 7, 'h', '8', new Rook(false, false));
 
 
         // initialize remaining board without any piece
@@ -123,5 +123,29 @@ public class Board {
         }
     }
 
+    //This method do the move and capture if necessary
+    public void Move(Spot start, Spot end) {
+        //Set start spot to null without piece;
+        for (int i=0; i<8; i++){
+            for (int j=0; j<8; j++){
+
+                //In new Spot
+                if (board[i][j]==end){
+                    //If exists, delete old piece from spot;
+                    if (board[i][j].getPiece()!=null){
+                        board[i][j].setPiece(null);
+                    }
+                    //Set new piece
+                    board[i][j].setPiece(start.getPiece());
+                    //set hasMoved to true
+                    board[i][j].getPiece().setHasmoved(true);
+                }
+                //In old spot, delete the piece
+                if (board[i][j]==start){
+                    board[i][j].setPiece(null);
+                }
+            }
+        }
+    }
 
 }

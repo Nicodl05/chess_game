@@ -7,23 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece{
-    private boolean Hasmoved;
-    public Pawn(boolean alive, boolean color) {
-        super(alive, color, 1);
-        Hasmoved=false;
-    }
 
-    @Override
-    public boolean canMove(Board board, Spot start, Spot end) {
-        // we can't move the piece to a spot that is occupied by a piece of the same color
-        if (end.getPiece().getColor() == this.getColor()) {
-            return false;
-        } else {
-
-            //HERE WE MUST WRITE THE METHOD OF MOVEMENT OF THIS PIECE
-            //FOR NOW, LET'S RETURN ALWAYS TRUE
-            return true;
-        }
+    public Pawn(boolean color, boolean hasmoved) {
+        super(color, 1, hasmoved);
     }
 
     @Override
@@ -35,7 +21,7 @@ public class Pawn extends Piece{
         //White side:
         if ( start.getPiece().getColor()==true && x>0){
 
-            if (this.Hasmoved==false) {
+            if (start.getPiece().GetHasmoved()==false) {
                 if (board.getSpot(x - 2, y).getPiece() == null) {
                     availables.add(board.getSpot(x - 2, y));
                 }
@@ -64,7 +50,7 @@ public class Pawn extends Piece{
 
 
         if (start.getPiece().getColor()==false && x<7){
-            if (this.Hasmoved==false) {
+            if (start.getPiece().GetHasmoved()==false) {
                 if (board.getSpot(x + 2, y).getPiece() == null) {
                     availables.add(board.getSpot(x + 2, y));
                 }
@@ -91,15 +77,6 @@ public class Pawn extends Piece{
             }
         }
         return availables;
-    }
-
-
-    public boolean Hasmoved() {
-        return Hasmoved;
-    }
-
-    public void setHasmoved(boolean hasmoved) {
-        Hasmoved = hasmoved;
     }
 
 

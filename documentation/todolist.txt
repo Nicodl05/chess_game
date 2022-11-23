@@ -1,8 +1,6 @@
 To do list
 
 Créer un menu start
-Créer les conditions déplacement
-Créer les conditions de bloque
 Créer la condition de castle
 Créer la condition d'échec
 Créer la condition de double echec --> Annuler l'echec par déplacement du king

@@ -7,14 +7,21 @@ import java.util.List;
 
 public abstract class Piece {
 
-    private boolean alive; //false if piece alive
     private boolean color; //true for white, false for black
     private int value;
-
-    public Piece(boolean alive, boolean color, int value) {
-        this.alive = alive;
+    private boolean Hasmoved;
+    public Piece(boolean color, int value, boolean hasmoved) {
         this.color = color;
         this.value=value;
+        this.Hasmoved=hasmoved;
+    }
+
+    public boolean GetHasmoved() {
+        return Hasmoved;
+    }
+
+    public void setHasmoved(boolean hasmoved) {
+        Hasmoved = hasmoved;
     }
 
     public int getValue() {
@@ -25,14 +32,6 @@ public abstract class Piece {
         this.value = value;
     }
 
-    public boolean getAlive() {
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
     public boolean getColor() {
         return color;
     }
@@ -41,9 +40,7 @@ public abstract class Piece {
         this.color = color;
     }
 
-    public abstract boolean canMove(Board board,
-                                    Spot start, Spot end);
-
     //Method to return all available spots on the board of a piece (by considering all conditions)
     public abstract List<Spot> available_spot(Board board, Spot start) throws Exception;
+
 }

@@ -31,13 +31,12 @@ public class Player {
     }
 
     //This method allow the user to write the square he wants to play
-    public void ChooseSpot(Board board) throws Exception {
+    public Spot ChooseSpotStart(Board board) throws Exception {
         char line;
         char column;
         String spot_name;
         boolean check;
-        Spot spot_start;
-        List <Spot> available=new ArrayList<>();
+        Spot spot_start=null;
 
         do {
             Scanner scanIn = new Scanner(System.in);
@@ -53,15 +52,42 @@ public class Player {
         || (check==false));
 
         spot_start=Get_chosenspot(column, line, board);
-        available=spot_start.getPiece().available_spot(board, spot_start);
+        return spot_start;
+        }
 
-        //Available spot
-        System.out.println("\nALl available spot");
+    //This method allow the user to write the square he wants to play
+    public Spot ChooseSpotEnd(Board board, Spot start) throws Exception {
+        char line='a';
+        char column='a';
+        String spot_name;
+        boolean check=false;
+        Spot spot_end=null;
+        List <Spot> available;
+        available=start.getPiece().available_spot(board, start);
+
+        System.out.println("All available spots:");
         for (int i=0; i<available.size(); i++){
             available.get(i).DisplayCoordinate();
         }
 
-        }
+        do {
+            System.out.println("Write the square name (for example e5)");
+            Scanner scanIn = new Scanner(System.in);
+            spot_name=scanIn.next();
+            for (int i=0; i<available.size(); i++){
+                column=spot_name.charAt(0);
+                line=spot_name.charAt(1);
+                //If the written square is in the list of available move
+                if (column==available.get(i).getLetter() && line==available.get(i).getNumber()){
+                    check=true;
+                }
+            }
+
+        } while (check==false);
+
+        spot_end=Get_chosenspot(column, line, board);
+        return spot_end;
+    }
 
     //This method check if the piece that wants to be played has the same color
     //AND if it has at least one available move
@@ -105,41 +131,14 @@ public class Player {
     }
 
     public Spot Get_chosenspot(char column, char line, Board board) throws Exception {
-
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-
                 //In the written spot
                 if (board.getBoard()[i][j].getLetter() == column && board.getBoard()[i][j].getNumber() == line) {
-
-                    //Check if a piece exist
-                    if (board.getBoard()[i][j].getPiece()!=null) {
-
-                        //Check if the piece in this spot is the same color as the player
-                        if (board.getBoard()[i][j].getPiece().getColor() == this.color) {
-
-                            List<Spot> availables = new ArrayList<>();
-                            availables = board.getBoard()[i][j].getPiece().available_spot(board, board.getBoard()[i][j]);
-                            //Check if the piece can be moved
-                            if (availables != null && availables.size()>0) {
                                 return board.getBoard()[i][j];
-                            } else {
-                                System.out.println("ERROR: You want to select a piece that can't move");
-                            }
-                        } else {
-                            System.out.println("ERROR: You want to play the piece of the opponent");
-                        }
-                    }
-                    else{
-                        System.out.println("ERROR: You want to select an empty spot");
-                    }
                 }
-
             }
-
         }
-
         return null;
     }
-
     }
