@@ -9,7 +9,7 @@ import java.util.List;
 public class Rook extends Piece {
 
     public Rook(boolean color, boolean hasmoved) {
-        super(color, 5, hasmoved);
+        super(color, 5, hasmoved, "Rook");
     }
 
     @Override

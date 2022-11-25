@@ -98,16 +98,16 @@ public class Player {
             for (int j = 0; j < 8; j++) {
 
                 //In the written spot
-                if (board.getBoard()[i][j].getLetter() == column && board.getBoard()[i][j].getNumber() == line) {
+                if (board.getSpot(i,j).getLetter() == column && board.getSpot(i,j).getNumber() == line) {
 
                     //Check if a piece exist
-                    if (board.getBoard()[i][j].getPiece()!=null) {
+                    if (board.getSpot(i,j).getPiece()!=null) {
 
                         //Check if the piece in this spot is the same color as the player
-                        if (board.getBoard()[i][j].getPiece().getColor() == this.color) {
+                        if (board.getSpot(i,j).getPiece().getColor() == this.color) {
 
                             List<Spot> availables = new ArrayList<>();
-                            availables = board.getBoard()[i][j].getPiece().available_spot(board, board.getBoard()[i][j]);
+                            availables = board.getSpot(i,j).getPiece().available_spot(board, board.getSpot(i,j));
                             //Check if the piece can be moved
                             if (availables != null && availables.size()>0) {
                                 check=true;
@@ -134,11 +134,15 @@ public class Player {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 //In the written spot
-                if (board.getBoard()[i][j].getLetter() == column && board.getBoard()[i][j].getNumber() == line) {
-                                return board.getBoard()[i][j];
+                if (board.getSpot(i,j).getLetter() == column && board.getSpot(i,j).getNumber() == line) {
+                                return board.getSpot(i,j);
                 }
             }
         }
         return null;
     }
+
+
+
+
     }

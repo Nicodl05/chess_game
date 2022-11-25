@@ -125,10 +125,8 @@ public class Board {
 
     //This method do the move and capture if necessary
     public void Move(Spot start, Spot end) {
-        //Set start spot to null without piece;
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
-
                 //In new Spot
                 if (board[i][j]==end){
                     //If exists, delete old piece from spot;
@@ -140,6 +138,11 @@ public class Board {
                     //set hasMoved to true
                     board[i][j].getPiece().setHasmoved(true);
                 }
+            }
+        }
+
+        for (int i=0; i<8; i++){
+            for (int j=0; j<8;j++){
                 //In old spot, delete the piece
                 if (board[i][j]==start){
                     board[i][j].setPiece(null);
@@ -147,5 +150,7 @@ public class Board {
             }
         }
     }
+
+
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Knight extends Piece{
     public Knight( boolean color, boolean hasmoved) {
-        super(color, 3, hasmoved);
+        super(color, 3, hasmoved, "Knight");
     }
 
     @Override
