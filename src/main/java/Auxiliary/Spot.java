@@ -9,7 +9,6 @@ public class Spot {
     private char letter;
     private char number;
 
-    public Spot()  {}
     public Spot(int x, int y, char letter, char number, Piece piece) {
         this.setPiece(piece);
         this.setX(x);
@@ -17,6 +16,12 @@ public class Spot {
         this.setLetter(letter);
         this.setNumber(number);
     }
+
+    public Spot(Spot s){
+        this.copyspot(s);
+    }
+
+
 
     public Piece getPiece() {
         return this.piece;
@@ -70,6 +75,15 @@ public class Spot {
 
     public void DisplayCoordinate(){
         System.out.println(letter+""+number);
+    }
+
+    public void copyspot(Spot s){
+        this.setPiece(s.getPiece());
+        this.setX(s.getX());
+        this.setY(s.getY());
+        this.setLetter(s.getLetter());
+        this.setNumber(s.getNumber());
+
     }
 
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m";

@@ -12,7 +12,7 @@ public class Bishop extends Piece{
     }
 
     @Override
-    public List<Spot> available_spot(Board board, Spot start) throws Exception {
+    public List<Spot> available_spot(Board board, Spot start, List<Spot> attacked) throws Exception {
         List<Spot> availables = new ArrayList<>();
         int x=start.getX();
         int y=start.getY();
@@ -24,19 +24,19 @@ public class Bishop extends Piece{
 
         while (limit==false && i>=0 && j<8) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
-                i--;
-                j++;
+            i--;
+            j++;
         }
 
 
@@ -47,14 +47,14 @@ public class Bishop extends Piece{
 
         while (limit==false && i<8 && j>=0) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
@@ -70,14 +70,14 @@ public class Bishop extends Piece{
 
         while (limit==false && i>=0 && j>=0) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
@@ -93,14 +93,14 @@ public class Bishop extends Piece{
 
         while (limit==false && i<8 && j<8) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }

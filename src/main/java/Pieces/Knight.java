@@ -12,7 +12,7 @@ public class Knight extends Piece{
     }
 
     @Override
-    public List<Spot> available_spot(Board board, Spot start) throws Exception {
+    public List<Spot> available_spot(Board board, Spot start, List<Spot> attacked) throws Exception {
         List<Spot> availables = new ArrayList<>();
         int x=start.getX();
         int y=start.getY();
@@ -30,14 +30,14 @@ public class Knight extends Piece{
             //Check if we are in the board
             if (x_end>=0 && x_end<8 && y_end>=0 && y_end<8){
                 //check if the spot is empty
-                if (board.getSpot(x_end, y_end).getPiece() == null) {
-                    availables.add(board.getSpot(x_end, y_end));
+                if (board.getSpot(x_end,y_end).getPiece() == null) {
+                    availables.add(board.getSpot(x_end,y_end));
 
                 } else {
                     //Check if it is an ally
-                    if (start.getPiece().getColor() == board.getSpot(x_end, y_end).getPiece().getColor()) {
+                    if (start.getPiece().getColor() == board.getSpot(x_end,y_end).getPiece().getColor()) {
                     } else {
-                        availables.add(board.getSpot(x_end, y_end));
+                        availables.add(board.getSpot(x_end,y_end));
                     }
                 }
 

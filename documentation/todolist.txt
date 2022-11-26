@@ -10,3 +10,9 @@ Créer la condition d'annuler l'échec
 	Manger
 Créer la condition échec et mat
 
+
+//By  aziz
+The move of Castle (des deux cotés)
+Echecs et maths --> function done
+En passant
+Clouage

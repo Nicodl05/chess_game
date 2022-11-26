@@ -12,7 +12,7 @@ public class Queen extends Piece{
     }
 
     @Override
-    public List<Spot> available_spot(Board board, Spot start) throws Exception {
+    public List<Spot> available_spot(Board board, Spot start, List<Spot> attacked) throws Exception {
         List<Spot> availables = new ArrayList<>();
         int x=start.getX();
         int y=start.getY();
@@ -25,17 +25,17 @@ public class Queen extends Piece{
             for (int i = x - 1; i >= 0; i--) {
                 if (limit == false) {
                     //check if the spot is empty
-                    if (board.getSpot(i, y).getPiece() == null) {
-                        availables.add(board.getSpot(i, y));
+                    if (board.getSpot(i,y).getPiece() == null) {
+                        availables.add(board.getSpot(i,y));
                         //If we reached the limit of the board in top, we end this check
                         if (i==0){
                             limit=true;
                         }
                     } else {
                         //Check if it is an ally
-                        if (start.getPiece().getColor() == board.getSpot(i, y).getPiece().getColor()) {
+                        if (start.getPiece().getColor() == board.getSpot(i,y).getPiece().getColor()) {
                         } else {
-                            availables.add(board.getSpot(i, y));
+                            availables.add(board.getSpot(i,y));
                         }
                         limit = true;
                     }
@@ -50,17 +50,17 @@ public class Queen extends Piece{
             for (int i = x + 1; i <8; i++) {
                 if (limit == false) {
                     //check if the spot is empty
-                    if (board.getSpot(i, y).getPiece() == null) {
-                        availables.add(board.getSpot(i, y));
+                    if (board.getSpot(i,y).getPiece() == null) {
+                        availables.add(board.getSpot(i,y));
                         //If we reached the limit of the board in down, we end this check
                         if (i==7){
                             limit=true;
                         }
                     } else {
                         //Check if it is an ally
-                        if (start.getPiece().getColor() == board.getSpot(i, y).getPiece().getColor()) {
+                        if (start.getPiece().getColor() == board.getSpot(i,y).getPiece().getColor()) {
                         } else {
-                            availables.add(board.getSpot(i, y));
+                            availables.add(board.getSpot(i,y));
                         }
                         limit = true;
                     }
@@ -76,17 +76,17 @@ public class Queen extends Piece{
             for (int i = y-1; i >=0; i--) {
                 if (limit == false) {
                     //check if the spot has no pieces
-                    if (board.getSpot(x, i).getPiece() == null) {
-                        availables.add(board.getSpot(x, i));
+                    if (board.getSpot(x,i).getPiece() == null) {
+                        availables.add(board.getSpot(x,i));
                         //If we reached the limit of the board in left, we end this check
                         if (i==0){
                             limit=true;
                         }
                     } else {
                         //Check if it is an ally
-                        if (start.getPiece().getColor() == board.getSpot(x, i).getPiece().getColor()) {
+                        if (start.getPiece().getColor() == board.getSpot(x,i).getPiece().getColor()) {
                         } else {
-                            availables.add(board.getSpot(x, i));
+                            availables.add(board.getSpot(x,i));
                         }
                         limit = true;
                     }
@@ -101,17 +101,17 @@ public class Queen extends Piece{
             for (int i = y+1; i <8; i++) {
                 if (limit == false) {
                     //check if the spot is empty
-                    if (board.getSpot(x, i).getPiece() == null) {
-                        availables.add(board.getSpot(x, i));
+                    if (board.getSpot(x,i).getPiece() == null) {
+                        availables.add(board.getSpot(x,i));
                         //If we reached the limit of the board in right, we end this check
                         if (i==7){
                             limit=true;
                         }
                     } else {
                         //Check if it is an ally
-                        if (start.getPiece().getColor() == board.getSpot(x, i).getPiece().getColor()) {
+                        if (start.getPiece().getColor() == board.getSpot(x,i).getPiece().getColor()) {
                         } else {
-                            availables.add(board.getSpot(x, i));
+                            availables.add(board.getSpot(x,i));
                         }
                         limit = true;
                     }
@@ -129,14 +129,14 @@ public class Queen extends Piece{
 
         while (limit==false && i>=0 && j<8) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
@@ -152,14 +152,14 @@ public class Queen extends Piece{
 
         while (limit==false && i<8 && j>=0) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
@@ -175,14 +175,14 @@ public class Queen extends Piece{
 
         while (limit==false && i>=0 && j>=0) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }
@@ -198,14 +198,14 @@ public class Queen extends Piece{
 
         while (limit==false && i<8 && j<8) {
             //check if the spot is empty
-            if (board.getSpot(i, j).getPiece() == null) {
-                availables.add(board.getSpot(i, j));
+            if (board.getSpot(i,j).getPiece() == null) {
+                availables.add(board.getSpot(i,j));
 
             } else {
                 //Check if it is an ally
-                if (start.getPiece().getColor() == board.getSpot(i, j).getPiece().getColor()) {
+                if (start.getPiece().getColor() == board.getSpot(i,j).getPiece().getColor()) {
                 } else {
-                    availables.add(board.getSpot(i, j));
+                    availables.add(board.getSpot(i,j));
                 }
                 limit = true;
             }

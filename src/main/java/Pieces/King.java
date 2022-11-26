@@ -13,96 +13,185 @@ public class King extends Piece{
 
 
 
+    //This method isn't complete because attacked_spot are considered as available but we correct this in Board.java
     @Override
-    public List<Spot> available_spot(Board board, Spot start) throws Exception {
+    public List<Spot> available_spot(Board board, Spot start, List<Spot> attacked) throws Exception {
         List<Spot> availables = new ArrayList<>();
         int x=start.getX();
         int y=start.getY();
 
         //On the left of King
         if (y<7) {
-            if (board.getSpot(x, y + 1).getPiece() == null
-                    || board.getSpot(x, y + 1).getPiece().getColor() != start.getPiece().getColor()) {
-                    availables.add(board.getSpot(x, y + 1));
+            if (board.getSpot(x,y+1).getPiece() == null
+                    || board.getSpot(x,y+1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x,y+1));
             }
         }
 
         //On the right of King
         if (y>0) {
-            if (board.getSpot(x, y - 1).getPiece() == null
-                    || board.getSpot(x, y - 1).getPiece().getColor() != start.getPiece().getColor()) {
-                    availables.add(board.getSpot(x, y - 1));
+            if (board.getSpot(x,y-1).getPiece() == null
+                    || board.getSpot(x,y-1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x,y-1));
             }
         }
 
         //Below the King
         if (x<7) {
-            if (board.getSpot(x+1, y).getPiece() == null
-                    || board.getSpot(x+1, y ).getPiece().getColor() != start.getPiece().getColor()) {
-                availables.add(board.getSpot(x+1, y ));
+            if (board.getSpot(x+1,y).getPiece() == null
+                    || board.getSpot(x+1,y).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x+1,y));
             }
         }
 
         //Above the King
         if (x>0) {
-            if (board.getSpot(x-1, y ).getPiece() == null
-                    || board.getSpot(x-1, y ).getPiece().getColor() != start.getPiece().getColor()) {
-                    availables.add(board.getSpot(x - 1, y));
+            if (board.getSpot(x-1,y).getPiece() == null
+                    || board.getSpot(x-1,y).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x-1,y));
             }
         }
 
         //Above Right King
         if (x>0 && y<7){
-            if (board.getSpot(x-1, y+1 ).getPiece() == null
-                    || board.getSpot(x-1, y+1 ).getPiece().getColor() != start.getPiece().getColor()) {
-                availables.add(board.getSpot(x-1, y+1));}
+            if (board.getSpot(x-1,y+1).getPiece() == null
+                    || board.getSpot(x-1,y+1).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x-1,y+1));}
         }
 
         //Above Left King
         if (x>0 && y>0){
-            if (board.getSpot(x-1, y-1 ).getPiece() == null
-                    || board.getSpot(x-1, y-1 ).getPiece().getColor() != start.getPiece().getColor()) {
-                availables.add(board.getSpot(x-1, y-1));}
+            if (board.getSpot(x-1,y-1).getPiece() == null
+                    || board.getSpot(x-1,y-1).getPiece().getColor() != start.getPiece().getColor()) {
+                availables.add(board.getSpot(x-1,y-1));}
 
         }
 
         //Below Left King
         if (x<7 && y>0){
-            if (board.getSpot(x+1, y-1 ).getPiece() == null
-                    || board.getSpot(x+1, y-1 ).getPiece().getColor() != start.getPiece().getColor()) {
-                    availables.add(board.getSpot(x + 1, y - 1));
+            if (board.getSpot(x+1,y-1).getPiece() == null
+                    || board.getSpot(x+1,y-1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x+1,y-1));
             }
         }
 
         //Below Right King
         if (x<7 && y<7){
-            if (board.getSpot(x+1, y+1 ).getPiece() == null
-                    || board.getSpot(x+1, y+1 ).getPiece().getColor() != start.getPiece().getColor()) {
-                    availables.add(board.getSpot(x + 1, y + 1));
+            if (board.getSpot(x+1,y+1).getPiece() == null
+                    || board.getSpot(x+1,y+1).getPiece().getColor() != start.getPiece().getColor()) {
+                    availables.add(board.getSpot(x+1,y+1));
             }
         }
 
-        //Method TO DO:
-        //1: We must retire all attacked spots from available_spots for the king
-        //2: Parcourir toutes les attacked spot et detecter si un de ces spots est celui de notre roi
-        //3: Partir du 1 et 2 pour faire les échecs...
+
+        //This loop is to remove all attacked_spots from available moves
+        if (availables.size()!=0 && attacked.size()!=0){
+            for (int i=0; i<attacked.size(); i++){
+                for (int j=0; j<availables.size(); j++){
+                    if (attacked.get(i)==availables.get(j)){
+                        availables.remove(j);
+                    }
+                }
+            }
+        }
 
         return availables;
     }
 
-    /*DOESN T WORK YET
-    public boolean Check_King(Board board, Spot King_Spot) throws Exception {
+    public boolean Long_Castle(Board board, List<Spot> attacked) throws Exception {
 
-        //Get all attacked spots
-        List <Spot> unvalid_spots=attacked_spot(board);
+        //On white side (Check if the spot of the king and the rook aren't empty)
+        if (board.getSpot(7,4).getPiece()!=null && board.getSpot(7,0).getPiece()!=null){
 
-        //For all attacked spots
-        for (int i=0; i<unvalid_spots.size(); i++){
-            //if the king wants to move to an attacked spot
-            if (spot_tocheck==unvalid_spots.get(i)){
-                return false;
+            //Check if they moved
+            if (board.getSpot(7,4).getPiece().GetHasmoved()==false && board.getSpot(7,0).getPiece().GetHasmoved()==false ){
+
+                //If there is no piece between them
+                if (board.getSpot(7,3).getPiece()==null && board.getSpot(7,2).getPiece()==null
+                        && board.getSpot(7,1).getPiece()==null){
+
+                    //Check if the path between them isn't attacked
+                    for (int i=0; i<attacked.size(); i++){
+                        if (attacked.get(i)==board.getSpot(7,2) || attacked.get(i)==board.getSpot(7,3)){
+                            return false;
+                        }
+
+                    }
+                    return true;
+                }
             }
         }
-        return true;
-    }*/
+
+        //On Black side (Check if the spot of the king and the rook aren't empty)
+        if (board.getSpot(0,4).getPiece()!=null && board.getSpot(0,0).getPiece()!=null){
+
+            //Check if they moved
+            if (board.getSpot(0,4).getPiece().GetHasmoved()==false && board.getSpot(0,0).getPiece().GetHasmoved()==false ){
+
+                //If there is no piece between them
+                if (board.getSpot(0,3).getPiece()==null && board.getSpot(0,2).getPiece()==null
+                        && board.getSpot(0,1).getPiece()==null){
+
+                    //Check if the path between them isn't attacked
+                    for (int i=0; i<attacked.size(); i++){
+                        if (attacked.get(i)==board.getSpot(0,2) || attacked.get(i)==board.getSpot(0,3)){
+                            return false;
+                        }
+
+                    }
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
+    public boolean Short_Castle(Board board, List<Spot> attacked) throws Exception {
+
+        //On white side (Check if the spot of the king and the rook aren't empty)
+        if (board.getSpot(7,4).getPiece()!=null && board.getSpot(7,7).getPiece()!=null){
+
+            //Check if they moved
+            if (board.getSpot(7,4).getPiece().GetHasmoved()==false && board.getSpot(7,7).getPiece().GetHasmoved()==false ){
+
+                //If there is no piece between them
+                if (board.getSpot(7,5).getPiece()==null && board.getSpot(7,6).getPiece()==null){
+
+                    //Check if the path between them isn't attacked
+                    for (int i=0; i<attacked.size(); i++){
+                        if (attacked.get(i)==board.getSpot(7,5) || attacked.get(i)==board.getSpot(7,6)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+
+        //On Black side (Check if the spot of the king and the rook aren't empty)
+        if (board.getSpot(0,4).getPiece()!=null && board.getSpot(0,7).getPiece()!=null){
+
+            //Check if they moved
+            if (board.getSpot(0,4).getPiece().GetHasmoved()==false && board.getSpot(0,7).getPiece().GetHasmoved()==false ){
+
+                //If there is no piece between them
+                if (board.getSpot(0,5).getPiece()==null && board.getSpot(0,6).getPiece()==null){
+
+                    //Check if the path between them isn't attacked
+                    for (int i=0; i<attacked.size(); i++){
+                        if (attacked.get(i)==board.getSpot(0,5) || attacked.get(i)==board.getSpot(0,6)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
 }

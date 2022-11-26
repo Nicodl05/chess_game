@@ -31,7 +31,7 @@ public class Player {
     }
 
     //This method allow the user to write the square he wants to play
-    public Spot ChooseSpotStart(Board board) throws Exception {
+    public Spot ChooseSpotStart(Board board, List<Spot> attacked) throws Exception {
         char line;
         char column;
         String spot_name;
@@ -45,7 +45,7 @@ public class Player {
             column=spot_name.charAt(0);
             line=spot_name.charAt(1);
 
-            check=Check_piece(column, line, board);
+            check=Check_piece(column, line, board,attacked );
 
         } while ((column!='a' && column!='b' && column!='c' && column!='d' && column!='e' && column!='f' && column!='g' && column!='h')
         || (line!='1' && line!='2' && line!='3' && line!='4' && line!='5' && line!='6' && line!='7' && line!='8')
@@ -56,14 +56,14 @@ public class Player {
         }
 
     //This method allow the user to write the square he wants to play
-    public Spot ChooseSpotEnd(Board board, Spot start) throws Exception {
+    public Spot ChooseSpotEnd(Board board, Spot start, List<Spot> attacked) throws Exception {
         char line='a';
         char column='a';
         String spot_name;
         boolean check=false;
         Spot spot_end=null;
         List <Spot> available;
-        available=start.getPiece().available_spot(board, start);
+        available=start.getPiece().available_spot(board, start, attacked);
 
         System.out.println("All available spots:");
         for (int i=0; i<available.size(); i++){
@@ -91,7 +91,7 @@ public class Player {
 
     //This method check if the piece that wants to be played has the same color
     //AND if it has at least one available move
-    public boolean Check_piece(char column, char line, Board board) throws Exception {
+    public boolean Check_piece(char column, char line, Board board, List<Spot> attacked) throws Exception {
 
         boolean check=false;
         for (int i = 0; i < 8; i++) {
@@ -107,7 +107,7 @@ public class Player {
                         if (board.getSpot(i,j).getPiece().getColor() == this.color) {
 
                             List<Spot> availables = new ArrayList<>();
-                            availables = board.getSpot(i,j).getPiece().available_spot(board, board.getSpot(i,j));
+                            availables = board.getSpot(i,j).getPiece().available_spot(board, board.getSpot(i,j), attacked);
                             //Check if the piece can be moved
                             if (availables != null && availables.size()>0) {
                                 check=true;
