@@ -1,18 +1,21 @@
-To do list
+TO DO:
+---------------------------------------
+NECESSAIRE:
 
-Créer un menu start
-Créer la condition de castle
-Créer la condition d'échec
-Créer la condition de double echec --> Annuler l'echec par déplacement du king
-Créer la condition d'annuler l'échec
-	Déplacement
-	Bloquage
-	Manger
-Créer la condition échec et mat
+-Clouage (interdit de bouger une pièce quand le roi est derrière et il se fera automatiquement attaqué)
+-Condition d echec: Obliger de faire une action pour sortir de la condtiion d echec (que ce soit bouger le roi, proteger avec une pièce
+ou manger la pièce adverse)
+-Condition d echec et mat: ecrite mais pas encore testé
+-Boucle de jeu: remplacer le while (i>25) de Interaction.java par tant qu il n y a pas d'échec et mat
 
+DE PREFERENCE:
+-La prise en passant
+-Petit rock et grand rock: (PS: j ai déja écrit les méthodes dans King qui reconnaissent la situation ou c est possible mais il faut le faire)
+-Toute la partie graphique
+---------------------------------------
 
-//By  aziz
-The move of Castle (des deux cotés)
-Echecs et maths --> function done
-En passant
-Clouage
+Comment se déroule le programme?
+Quand on lance le programme, il nous demande d ecrire une case qu on veut sélectionner. tout les blindages sont fait. On a juste
+à écrire par exemple a2 pour selectionner le pion a2.
+Ensuite le programme affiche tout les coups possibles à partir de la pièce choisi. Par exemple, pour a2, ca va demander de choisir entre
+la case a4 et a3.

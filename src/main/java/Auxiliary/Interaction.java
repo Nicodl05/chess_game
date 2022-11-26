@@ -34,8 +34,6 @@ public class Interaction {
     //This method do the move and capture if necessary
     public void Move(Spot start, Spot end, Player player) throws Exception {
 
-        //CHECKMATE OF THE OPPONENT
-        Checkmate(!player.getColor());
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){
                 //In new Spot
