@@ -120,7 +120,7 @@ public class Board {
             for (int j = 0; j < 8; j++) {
                 board[i][j].DisplaySpot();
             }
-            System.out.println();
+            System.out.println("\t"+ (8-i) +" ");
         }
         String[]tab = {"A","B","C","D","E","F","G","H"};
         System.out.print("\t");

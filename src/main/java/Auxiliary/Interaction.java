@@ -17,17 +17,28 @@ public class Interaction {
     public void Game() throws Exception {
         int i = 0;
         Spot start, start2, end, end2;
+        boolean endgame=false;
+        String player="who won";
         do {
             board.displayBoard();
             start = player1.ChooseSpotStart(board , attacked_spot(player1.getColor()) );
             end = player1.ChooseSpotEnd(board, start, attacked_spot(player1.getColor()));
             Move(start, end, player1);
             board.displayBoard();
+            if(Checkmate(player2.getColor())){
+                player="player 1" ;
+                endgame=true;
+            }
             start2 = player2.ChooseSpotStart(board, attacked_spot(player2.getColor()));
             end2 = player2.ChooseSpotEnd(board, start2, attacked_spot(player2.getColor()));
             Move(start2, end2, player2);
             i++;
-        } while (i<25);
+            if(Checkmate(player1.getColor())){
+                player="player 2";
+                endgame=true;
+            }
+        } while (!endgame);
+        System.out.println(player +" has won");
     }
 
 
@@ -242,8 +253,6 @@ public class Interaction {
                 }
             }
         }
-
-
         return availables;
     }
 
