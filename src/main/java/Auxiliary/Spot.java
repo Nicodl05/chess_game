@@ -66,10 +66,10 @@ public class Spot {
 
     public void DisplaySpot(){
         if (this.getPiece()!=null) {
-            System.out.print(" " + x + " " + y + " ");
+            System.out.print(" " + x + "" + y + " ");
         }
         else{
-            System.out.print(ANSI_RED_BACKGROUND+" X X "+ANSI_RESET);
+            System.out.print(ANSI_RED_BACKGROUND+" XX "+ANSI_RESET);
         }
     }
 
